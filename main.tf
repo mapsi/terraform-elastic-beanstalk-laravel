@@ -3,31 +3,17 @@ provider "aws" {
   region = var.region
 }
 
-module "vpc" {
-  source     = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.9.0"
+module "networking" {
+  source = "./infrastructure/networking"
+
   namespace  = var.namespace
   stage      = var.stage
   name       = var.name
   attributes = var.attributes
   tags       = var.tags
   delimiter  = var.delimiter
-  cidr_block = "172.16.0.0/16"
-}
 
-module "subnets" {
-  source               = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.19.0"
-  availability_zones   = var.availability_zones
-  namespace            = var.namespace
-  stage                = var.stage
-  name                 = var.name
-  attributes           = var.attributes
-  tags                 = var.tags
-  delimiter            = var.delimiter
-  vpc_id               = module.vpc.vpc_id
-  igw_id               = module.vpc.igw_id
-  cidr_block           = module.vpc.vpc_cidr_block
-  nat_gateway_enabled  = true
-  nat_instance_enabled = false
+  availability_zones = var.availability_zones
 }
 
 module "elastic_beanstalk_application" {
@@ -63,13 +49,13 @@ module "elastic_beanstalk_environment" {
   version_label                      = var.version_label
   force_destroy                      = var.force_destroy
 
-  instance_type    = var.instance_type
+  instance_type    = var.instance_type_ec2
   root_volume_size = var.root_volume_size
   root_volume_type = var.root_volume_type
 
-  managed_actions_enabled = var.managed_actions_enabled
-  preferred_start_time = var.preferred_start_time
-  update_level = var.update_level
+  managed_actions_enabled  = var.managed_actions_enabled
+  preferred_start_time     = var.preferred_start_time
+  update_level             = var.update_level
   instance_refresh_enabled = var.instance_refresh_enabled
 
   autoscale_min             = var.autoscale_min
