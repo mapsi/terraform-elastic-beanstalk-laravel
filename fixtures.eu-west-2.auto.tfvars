@@ -72,7 +72,7 @@ elb_scheme = "public"
 
 // https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html
 // https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html#platforms-supported.docker
-solution_stack_name = "64bit Amazon Linux 2018.03 v2.14.2 running Docker 18.09.9-ce"
+solution_stack_name = "64bit Amazon Linux 2018.03 v2.9.3 running PHP 7.3"
 
 version_label = ""
 
