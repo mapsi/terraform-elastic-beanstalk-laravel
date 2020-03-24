@@ -68,10 +68,10 @@ module "elastic_beanstalk_environment" {
   autoscale_upper_bound     = var.autoscale_upper_bound
   autoscale_upper_increment = var.autoscale_upper_increment
 
-  vpc_id                  = module.vpc.vpc_id
-  loadbalancer_subnets    = module.subnets.public_subnet_ids
-  application_subnets     = module.subnets.private_subnet_ids
-  allowed_security_groups = [module.vpc.vpc_default_security_group_id]
+  vpc_id                  = module.networking.vpc_id
+  loadbalancer_subnets    = module.networking.public_subnet_ids
+  application_subnets     = module.networking.private_subnet_ids
+  allowed_security_groups = [module.networking.vpc_default_security_group_id]
 
   rolling_update_enabled  = var.rolling_update_enabled
   rolling_update_type     = var.rolling_update_type
