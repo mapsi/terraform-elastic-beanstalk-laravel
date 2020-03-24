@@ -90,7 +90,7 @@ module "elastic_beanstalk_environment" {
     "DB_SCHEMA"   = var.database_name
     "DB_USERNAME" = var.database_user
     "DB_PASSWORD" = var.database_password
-    "REDIS_HOST"  = module.redis.cluster_host
+    "REDIS_HOST"  = module.redis.host
   }
 }
 
