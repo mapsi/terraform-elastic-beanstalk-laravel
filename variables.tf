@@ -71,7 +71,7 @@ variable "availability_zone_selector" {
   description = "Availability Zone selector"
 }
 
-variable "instance_type" {
+variable "instance_type_ec2" {
   type        = string
   description = "Instances type"
 }

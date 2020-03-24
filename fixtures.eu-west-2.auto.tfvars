@@ -20,7 +20,7 @@ loadbalancer_type = "application"
 
 availability_zone_selector = "Any 2"
 
-instance_type = "t3.micro"
+instance_type_ec2 = "t3.micro"
 
 managed_actions_enabled = true
 
