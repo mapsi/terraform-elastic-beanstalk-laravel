@@ -1,8 +1,3 @@
-variable "profile" {
-  type        = string
-  description = "AWS profile"
-}
-
 variable "region" {
   type        = string
   description = "AWS region"
@@ -227,4 +222,5 @@ variable "env_vars" {
   default     = {}
   description = "Map of custom ENV variables to be provided to the application running on Elastic Beanstalk, e.g. env_vars = { DB_USER = 'admin' DB_PASS = 'xxxxxx' }"
 }
+
 
